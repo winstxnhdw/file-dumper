@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Force File as Text</title>
+    <title>File Upload and View</title>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -12,9 +12,9 @@
     </style>
 </head>
 <body>
-    <h1>Upload and View File as Text</h1>
+    <h1>Upload and View File</h1>
     <input type="file" id="file-input" />
-    <button id="dump-button">Dump as Text</button>
+    <button id="dump-button">Dump</button>
 
     <script>
         const fileInput = document.getElementById('file-input');
@@ -28,19 +28,9 @@
                 return;
             }
 
-            const fileReader = new FileReader();
-
-            fileReader.onload = function (event) {
-                // Get the raw text content of the file
-                const fileText = event.target.result;
-
-                // Create a new tab with the file's text content
-                const newTab = window.open();
-                newTab.document.body.innerHTML = `<pre>${fileText}</pre>`;
-            };
-
-            // Read the file as text, regardless of its MIME type
-            fileReader.readAsText(file);
+            // Create a URL for the file and open it in a new tab
+            const fileURL = URL.createObjectURL(file);
+            window.open(fileURL, '_blank');
         });
     </script>
 </body>
