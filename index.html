@@ -26,14 +26,16 @@
 <body>
     <h1>Upload and View File</h1>
     <input type="file" id="file-input" />
+    <button id="dump-button">Dump</button>
     <div id="file-display"></div>
 
     <script>
         const fileInput = document.getElementById('file-input');
+        const dumpButton = document.getElementById('dump-button');
         const fileDisplay = document.getElementById('file-display');
 
-        fileInput.addEventListener('change', function () {
-            const file = this.files[0];
+        dumpButton.addEventListener('click', function () {
+            const file = fileInput.files[0];
 
             if (!file) {
                 fileDisplay.innerHTML = 'No file selected';
@@ -41,25 +43,19 @@
             }
 
             const fileReader = new FileReader();
-            fileReader.onload = function (event) {
-                const fileURL = event.target.result;
 
-                if (file.type.startsWith('image/')) {
-                    // Display image
-                    fileDisplay.innerHTML = `<img src="${fileURL}" alt="Uploaded Image">`;
-                } else if (file.type === 'text/plain') {
-                    // Display text
-                    fileDisplay.innerHTML = `<pre>${event.target.result}</pre>`;
-                } else {
-                    fileDisplay.innerHTML = `<p>File uploaded: ${file.name}</p>`;
-                }
+            fileReader.onload = function (event) {
+                const fileContent = event.target.result;
+
+                // Display the file name
+                fileDisplay.innerHTML = `<p>File uploaded: ${file.name}</p>`;
+
+                // Display text content
+                fileDisplay.innerHTML += `<pre>${fileContent}</pre>`;
             };
 
-            if (file.type.startsWith('image/') || file.type === 'text/plain') {
-                fileReader.readAsDataURL(file);
-            } else {
-                fileReader.readAsText(file);
-            }
+            // Always read the file as text
+            fileReader.readAsText(file);
         });
     </script>
 </body>
