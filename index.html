@@ -3,58 +3,43 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>File Upload and View</title>
+    <title>Force File as Text</title>
     <style>
         body {
             font-family: Arial, sans-serif;
             margin: 20px;
         }
-        #file-display {
-            margin-top: 20px;
-        }
-        img {
-            max-width: 100%;
-            height: auto;
-        }
-        pre {
-            background: #f4f4f4;
-            padding: 10px;
-            overflow-x: auto;
-        }
     </style>
 </head>
 <body>
-    <h1>Upload and View File</h1>
+    <h1>Upload and View File as Text</h1>
     <input type="file" id="file-input" />
-    <button id="dump-button">Dump</button>
-    <div id="file-display"></div>
+    <button id="dump-button">Dump as Text</button>
 
     <script>
         const fileInput = document.getElementById('file-input');
         const dumpButton = document.getElementById('dump-button');
-        const fileDisplay = document.getElementById('file-display');
 
         dumpButton.addEventListener('click', function () {
             const file = fileInput.files[0];
 
             if (!file) {
-                fileDisplay.innerHTML = 'No file selected';
+                alert('No file selected');
                 return;
             }
 
             const fileReader = new FileReader();
 
             fileReader.onload = function (event) {
-                const fileContent = event.target.result;
+                // Get the raw text content of the file
+                const fileText = event.target.result;
 
-                // Display the file name
-                fileDisplay.innerHTML = `<p>File uploaded: ${file.name}</p>`;
-
-                // Display text content
-                fileDisplay.innerHTML += `<pre>${fileContent}</pre>`;
+                // Create a new tab with the file's text content
+                const newTab = window.open();
+                newTab.document.body.innerHTML = `<pre>${fileText}</pre>`;
             };
 
-            // Always read the file as text
+            // Read the file as text, regardless of its MIME type
             fileReader.readAsText(file);
         });
     </script>
