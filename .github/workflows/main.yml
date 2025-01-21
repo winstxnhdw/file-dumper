@@ -1,0 +1,19 @@
+name: CI
+
+on:
+  pull_request:
+    types: opened
+  push:
+    paths:
+      - .github/workflows/main.yml
+      - biome.json
+      - tsconfig.json
+      - package.json
+      - bun.lockb
+      - '**.ts'
+
+jobs:
+  test:
+    uses: winstxnhdw/actions/.github/workflows/bun.yml@main
+    with:
+      disable-formatter: true
