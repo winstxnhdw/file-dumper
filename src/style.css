@@ -22,5 +22,13 @@ body {
   padding: 20px 40px;
   border-radius: 10px;
   cursor: pointer;
-  margin-bottom: 20px;
+}
+
+#dump-button {
+  margin-top: 20px;
+  margin-bottom: 10px;
+}
+
+#file-link {
+  font-size: 8pt;
 }

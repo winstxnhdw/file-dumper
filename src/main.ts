@@ -10,6 +10,7 @@ function readFileAsync(file: File | Blob): Promise<string> {
 
 async function dumpFile() {
   const fileInput = document.getElementById('file-input') as HTMLInputElement
+  const fileLink = document.getElementById('file-link') as HTMLAnchorElement
   const file = fileInput.files?.[0]
 
   if (!file) {
@@ -19,7 +20,11 @@ async function dumpFile() {
 
   const fileContent = await readFileAsync(file)
   const newFileBlob = new Blob([fileContent], { type: 'text/plain' })
-  open(URL.createObjectURL(newFileBlob), file.name)
+
+  fileLink.href = URL.createObjectURL(newFileBlob)
+  fileLink.target = file.name
+  fileLink.hidden = false
+  fileLink.click()
 }
 
 window.dumpFile = dumpFile
