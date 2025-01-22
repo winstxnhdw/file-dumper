@@ -2,7 +2,7 @@
   "scripts": {
     "lint": "biome check .",
     "dev": "bunx --bun vite",
-    "build": "bun x vite build",
+    "build": "bunx --bun vite build",
     "preview": "vite preview"
   },
   "dependencies": {
