@@ -4,7 +4,7 @@
 [![main.yml](https://github.com/winstxnhdw/file-dumper/actions/workflows/main.yml/badge.svg)](https://github.com/winstxnhdw/file-dumper/actions/workflows/main.yml)
 [![formatter.yml](https://github.com/winstxnhdw/file-dumper/actions/workflows/formatter.yml/badge.svg)](https://github.com/winstxnhdw/file-dumper/actions/workflows/formatter.yml)
 
-`file-dumper` is a tiny vanilla TypeScript Vite application for dumping the contents of *any* file. This application is made for iOS users to read file(s) with an unrecognisable extension.
+`file-dumper` is a tiny vanilla TypeScript Vite PWA for dumping the contents of *any* file. This application is made for iOS users to read file(s) with an unrecognisable extension.
 
 ## Development
 
