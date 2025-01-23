@@ -1,4 +1,4 @@
-h1 > a {
+h1>a {
   text-decoration: none;
 }
 
@@ -17,11 +17,16 @@ body {
   height: 100vh;
 }
 
+#file-input-label {
+  font-size: 10pt;
+}
+
 #file-input {
   background-color: #ededee;
   padding: 20px 40px;
   border-radius: 10px;
   cursor: pointer;
+  margin-top: 5px;
 }
 
 #dump-button {
@@ -38,7 +43,8 @@ body {
 
 #dump-button:hover {
   color: rgb(48, 48, 48);
-  background-color: rgb(153, 153, 153); /* Darker shade on hover */
+  background-color: rgb(153, 153, 153);
+  /* Darker shade on hover */
 }
 
 #file-link {
