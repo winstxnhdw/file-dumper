@@ -1,6 +1,6 @@
-import { defineConfig } from 'vite'
-import { createHtmlPlugin } from 'vite-plugin-html'
-import { VitePWA } from 'vite-plugin-pwa'
+import { defineConfig } from 'vite';
+import { createHtmlPlugin } from 'vite-plugin-html';
+import { VitePWA } from 'vite-plugin-pwa';
 
 const manifest = {
   name: 'File Dumper',
@@ -19,7 +19,7 @@ const manifest = {
       type: 'image/png',
     },
   ],
-}
+};
 
 export default defineConfig({
   build: { minify: true },
@@ -32,4 +32,4 @@ export default defineConfig({
       workbox: { navigateFallback: 'index.html' },
     }),
   ],
-})
+});
